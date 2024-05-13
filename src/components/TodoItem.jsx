@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TodoContext } from '../App'
 
-const TodoItem= ({todo,toogleCompleted,deleteTodo})=> {
+const TodoItem= ({todo})=> {
 
   const getTodoTitleStyle=()=>{
     if(todo.completed === true){
@@ -9,6 +10,9 @@ const TodoItem= ({todo,toogleCompleted,deleteTodo})=> {
       return {textDecoration:"none"}
     }
   }
+
+  const {toogleCompleted,deleteTodo}= useContext(TodoContext)
+
   return (
     <div style={styles.todoItem}>
       <input type='checkbox' style={styles.checkbox} onChange={()=>{toogleCompleted(todo.id)}}/>

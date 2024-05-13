@@ -1,9 +1,12 @@
-import { useState } from 'react'
+import { createContext, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Todos from './components/Todos'
 import TodoForm from './components/TodoForm'
+
+export const TodoContext = createContext()
+
 function App() {
   
   const [todos,setTodos] = useState([
@@ -64,13 +67,16 @@ function App() {
 
 
   return (
-    <>
+    <TodoContext.Provider value={{toogleCompleted,deleteTodo}}>
+
+    
+    
       <div style={styles.container}>
         <h1 style={styles.title}>My Todo List</h1>
         <TodoForm addTodo={addTodo}/>
-         <Todos todos={todos} toogleCompleted={toogleCompleted} deleteTodo={deleteTodo}/>
+         <Todos todos={todos} />
       </div> 
-    </>
+      </TodoContext.Provider>
   )
 }
 
