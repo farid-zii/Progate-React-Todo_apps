@@ -9,8 +9,8 @@ function App() {
     {
       id:1,
       title:'Finish Progate React Course',
-      completed:false,
-    },
+      completed:false
+     },
     {
       id:2,
       title:'Have lunch with Guru Domba',
@@ -33,6 +33,18 @@ function App() {
 
     setTodos(updatedTodos)
   };
+  const deleteTodo=(todoId)=>{
+    const updatedTodos = todos.filter((todo)=>{
+      // Cari / filter isi todos jadikan satuan todo
+      if(todo.id !== todoId){
+        // cek apakah id didalam todo sama dengan todoId
+        return todo
+        //kembalikan todo
+      }
+    })
+    setTodos(updatedTodos)
+    //update todo
+  };
 
 
   return (
@@ -40,8 +52,8 @@ function App() {
       <div style={styles.container}>
         <h1 style={styles.title}>My Todo List</h1>
 
-         <Todos todos={todos} toogleCompleted={toogleCompleted}/>
-      </div>
+         <Todos todos={todos} toogleCompleted={toogleCompleted} deleteTodo={deleteTodo}/>
+      </div> 
     </>
   )
 }
